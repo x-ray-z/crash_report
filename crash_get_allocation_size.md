@@ -41,14 +41,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
 
 ## crash description
 
-- product introduce
-    Nanopb is a plain-C implementation of Google's Protocol Buffers data format. 
-    Github仓库地址: https://github.com/nanopb/nanopb (Star 4.1k)
-
-- crash analyze
-    "Nanopb" 存在 Heap-buffer-overflow / 越界读 漏洞
-    get_allocation_size函数未校验传入的mem指针，直接减去“PREFIX_SIZE”偏移量，导致读取buf时发生越界。
-    "Nanopb" has a Heap-buffer-overflow vulnerability. The `get_allocation_size` function does not check the `mem` pointer passed in, and directly subtracts the "PREFIX_SIZE" offset, resulting in an out-of-bounds error when reading `buf`.
+The `get_allocation_size` function does not check the `mem` pointer passed in, and directly subtracts the "PREFIX_SIZE" offset, resulting in an out-of-bounds error when reading `buf`.
 
 ## Crash log
 ```
